@@ -10,3 +10,17 @@
 
 - [Aclorol 5V 10A 50W Power Supply 100V-240V AC to DC Adapter 5V 10 amp Switching Converter 5.5x2.1mm Plug for WS2811 WS2812B WS2813 5V LED Strip Pixel Lights](https://www.amazon.com/gp/product/B07CMM2BBR)
   --> But the LED is powered via the Raspberry Pi 4 and the AC adapter wasn't required.
+
+## Videos
+
+entinel-Glow CO2 Ornaments - Normal Mode
+<div><video controls src="videos/Sentinel-Glow CO2 Ornaments - Normal Mode.mp4"></video></div>
+
+Sentinel-Glow CO2 Ornaments - Normal Mode to Warning Mode
+<div><video controls src="videos/Sentinel-Glow CO2 Ornaments - Normal Mode to Warning Mode.mp4"></video></div>
+
+Sentinel-Glow CO2 Ornaments - Warning Mode (High)
+<div><video controls src="videos/Sentinel-Glow CO2 Ornaments - Warning Mode (Critical).mp4"></video></div>
+
+Sentinel-Glow CO2 Ornaments - Warning Mode (Critical)
+<div><video controls src="videos/Sentinel-Glow CO2 Ornaments - Warning Mode (High).mp4"></video></div>
