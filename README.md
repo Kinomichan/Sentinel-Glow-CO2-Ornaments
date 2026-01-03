@@ -14,13 +14,13 @@
 ## Videos
 
 entinel-Glow CO2 Ornaments - Normal Mode
-<div><video controls src="videos/Sentinel-Glow CO2 Ornaments - Normal Mode.mp4"></video></div>
+<video controls src="videos/Sentinel-Glow CO2 Ornaments - Normal Mode.mp4"></video>
 
 Sentinel-Glow CO2 Ornaments - Normal Mode to Warning Mode
-<div><video controls src="videos/Sentinel-Glow CO2 Ornaments - Normal Mode to Warning Mode.mp4"></video></div>
+<video controls src="videos/Sentinel-Glow CO2 Ornaments - Normal Mode to Warning Mode.mp4"></video>
 
 Sentinel-Glow CO2 Ornaments - Warning Mode (High)
-<div><video controls src="videos/Sentinel-Glow CO2 Ornaments - Warning Mode (Critical).mp4"></video></div>
+<video controls src="videos/Sentinel-Glow CO2 Ornaments - Warning Mode (Critical).mp4"></video>
 
 Sentinel-Glow CO2 Ornaments - Warning Mode (Critical)
-<div><video controls src="videos/Sentinel-Glow CO2 Ornaments - Warning Mode (High).mp4"></video></div>
+<video controls src="videos/Sentinel-Glow CO2 Ornaments - Warning Mode (High).mp4"></video>
