@@ -214,6 +214,31 @@ def turnOnLed(pixels, numPixels, sleepTime, colors, event):
         else:
             startPos = 0
 
+
+###
+def blink_red(sleepTime, event=None):
+    pixelPin = board.D18
+    numPixels = 100
+    ORDER = neopixel.RGB
+
+    pixels = neopixel.NeoPixel(
+        pixelPin, numPixels, brightness=0.2, auto_write=False, pixel_order=ORDER
+    )
+
+    try:
+        while True:
+            pixels.fill((255, 0, 0))
+            pixels.show()
+            time.sleep(sleepTime)
+            pixels.fill((255, 255, 255))
+            pixels.show()
+            time.sleep(sleepTime)
+
+    except:
+        pixels.fill((0, 0, 0)) # turn off all LEDs
+        pixels.show()
+
+
 ###
 def turn_off_led():
     pixel_pin = board.D18

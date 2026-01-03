@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+
+import threading
+import time
+import sys
+
+from neopixshow.effects import *
+from scd30.scd30_monitor import scd30Monitor
+
+TH_WARN = 1000
+TH_HIGH = 1500
+TH_CRITICAL = 2000
+
+EFFECT_DURATION = 10
+CHECK_INTERVAL = 1
+
+def run_effect(effect_func, stop_event, args=()):
+    t = threading.Thread(target=effect_func, args=(stop_event, *args))
+    t.start()
+    return t
+
+def get_alert_speed(co2_value):
+    if co2_value >= TH_CRITICAL:
+        return 0.1
+    elif co2_value >= TH_HIGH:
+        return 0.5
+    elif co2_value >= TH_WARN:
+        return 1.0
+    else:
+        return None
+
+
+def main():
+    sleepSec = 3
+
+    neopixTasks = [
+        hue_wheel_fill,
+        rainbow_blink_gradually_bright,
+        rainbow_blink,
+        rgbw_sequence
+    ]
+
+    sensor = scd30Monitor()
+    sensor.start()
+    # Waiting for SCD30 sensor 
+    time.sleep(1)
+
+    stop_event = threading.Event()
+    current_thread = None
+
+    print("=== Start Sentinel-Glow CO2 Ornaments ===")
+    print("Press Ctrl+C to exit.\n")
+
+    try:
+        while True:
+            for neopix in neopixTasks:
+                stop_event.clear()
+    
+                task_name = neopix.__name__
+                print(f"--- Starting task: {task_name} ---")
+                
+                current_thread = threading.Thread(target=neopix, args=(stop_event,))
+                current_thread.start()
+    
+                try:
+                    for i in range(sleepTime):
+                        print(f"CO2: {sensor.co2:.0f}ppm, "
+                              f"Temp: {sensor.temperature:.1f}C")
+
+                        if (sensor.co2 > 1000):
+                             current_thread = threading.Thread(target=blink_red, args=(stop_event,0.1))
+                             current_thread.start()
+                             ### <---
+
+                        time.sleep(1)
+
+                except KeyboardInterrupt:
+                    print("\nKeyboardInterrupt detected!")
+                    raise
+    
+                finally:
+                    print(f"Stopping task: {task_name}...")
+                    stop_event.set()
+                    current_thread.join()
+
+    except KeyboardInterrupt:
+        print("\n\n!!! Keyboard Interrupt Detected !!!")
+
+    finally:
+        if current_thread is not None and current_thread.is_alive():
+            print("Cleaning up running thread...")
+            stop_event.set()
+            current_thread.join()
+        
+        print("=== Sentinel-Glow CO2 Ornaments Finished Safely ===")
+
+if __name__ == '__main__':
+    main()
