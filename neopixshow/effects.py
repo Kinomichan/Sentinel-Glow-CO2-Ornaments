@@ -229,13 +229,24 @@ def blink_red(sleepTime, event=None):
         while True:
             pixels.fill((255, 0, 0))
             pixels.show()
-            time.sleep(sleepTime)
+
+            if event.wait(timeout=sleepTime):
+                pixels.fill((0, 0, 0))
+                pixels.show()
+
+                return
+
             pixels.fill((255, 255, 255))
             pixels.show()
-            time.sleep(sleepTime)
+
+            if event.wait(timeout=sleepTime):
+                pixels.fill((0, 0, 0))
+                pixels.show()
+
+                return
 
     except:
-        pixels.fill((0, 0, 0)) # turn off all LEDs
+        pixels.fill((0, 0, 0))
         pixels.show()
 
 

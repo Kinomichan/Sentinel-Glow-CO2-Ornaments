@@ -8,9 +8,9 @@ from neopixshow.effects import *
 from scd30.scd30_monitor import scd30Monitor
 
 # CO2 Threshold levels (ppm)
-TH_WARN = 1100
-TH_HIGH = 1500
-TH_CRITICAL = 2000
+TH_WARN = 1000
+TH_HIGH = 2500
+TH_CRITICAL = 5000
 
 EFFECT_DURATION = 10
 CHECK_INTERVAL = 1
@@ -80,9 +80,10 @@ def main():
                 try:
                     while sensor.co2 >= TH_WARN:
                         new_co2 = sensor.co2
+                        new_temp = sensor.temperature
+
                         new_speed = get_alert_speed(new_co2)
                         
-                        # If the alert level changes (e.g. 1200 -> 1600), restart the effect
                         if new_speed != current_speed:
                             print(f"   -> Level Changed! CO2: {new_co2:.0f}ppm. Adjusting speed to {new_speed}s")
                             
@@ -95,8 +96,9 @@ def main():
                             current_thread = run_effect(blink_red, stop_event, args=(new_speed,))
                             current_speed = new_speed
                         
+                        print(f"Status -> CO2: {new_co2:.0f}ppm, Temp: {new_temp:.1f}C")
                         time.sleep(CHECK_INTERVAL)
-                        
+
                 finally:
                     # Clean up before returning to normal mode
                     stop_event.set()
@@ -124,6 +126,7 @@ def main():
                             interrupted = True
                             break
                         time.sleep(CHECK_INTERVAL)
+
                 finally:
                     stop_event.set()
                     current_thread.join()
