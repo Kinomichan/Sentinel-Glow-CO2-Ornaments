@@ -17,14 +17,14 @@ Sentinel-Glow CO2 Ornaments - Normal Mode
 
 https://github.com/user-attachments/assets/7cd034a4-e531-4db3-bbb8-f13e987ed100
 
-Sentinel-Glow CO2 Ornaments - Normal Mode to Warning Mode
+Sentinel-Glow CO2 Ornaments - Normal Mode to Warning Mode (≥ 1000 ppm)
 
 https://github.com/user-attachments/assets/d01cb7b7-8d01-4551-a646-0d8bd3554f02
 
-Sentinel-Glow CO2 Ornaments - Warning Mode (High)
+Sentinel-Glow CO2 Ornaments - Warning Mode (High, ≥ 2500 ppm)
 
 https://github.com/user-attachments/assets/187df413-fc64-4dba-8881-33b0bcc6b47b
 
-Sentinel-Glow CO2 Ornaments - Warning Mode (Critical)
+Sentinel-Glow CO2 Ornaments - Warning Mode (Critical, ≥ 5000 ppm)
 
 https://github.com/user-attachments/assets/e23a27d0-de08-4190-b073-de90b6d19efd
